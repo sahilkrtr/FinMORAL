@@ -252,29 +252,3 @@ Performance (speed, accuracy, and resource usage) of the FinMORAL pipeline depen
 > - Expect higher accuracy but slower and more resource-intensive runs with large LLMs and full datasets.
 > - API-based LLMs may incur cost and rate limits.
 
----
-
-**FinMORAL Framework** - Advancing table question answering through multi-modal reasoning and intelligent answer selection.
-
-## Core Models Used
-
-| Module         | Model Used                    | Notes                             |
-| -------------- | ----------------------------- | --------------------------------- |
-| SQL Generator  | Pointer-generator Transformer | 4-layer, 512-dim, trained on WTQ  |
-| NumSolver      | Symbolic arithmetic parser    | Tree-based numeric reasoning      |
-| CoT            | GPT-4.5 (OpenAI)              | Temperature = 0.3, k = 5 samples  |
-| Reranker       | DistilBERT                    | Pairwise, trained with BCE loss   |
-| Voting + Trust | Mix-SC                        | Combines consistency + heuristics |
-
-## Requirements
-
-- Python 3.8+
-- pandas
-- transformers
-- openai
-- sympy
-
-## Notes
-- This implementation strictly follows the FinMORAL framework as described in the research paper.
-- All LLM-based modules use the specified models (no DeepSeek or Together API).
-- For CoT, you must provide your OpenAI API key.
