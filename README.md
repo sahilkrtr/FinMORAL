@@ -51,7 +51,7 @@ pip install -r requirements.txt
 2. **Download datasets:**
    - **WTQ (WikiTableQuestions):** [Download here](https://github.com/ppasupat/WikiTableQuestions)
    - **FTQ (Filtered FeTaQA):**
-     - FTQ is a filtered version of the [FeTaQA dataset](https://github.com/Yale-LILY/FeTaQA).
+   - FTQ is a filtered version of the [FeTaQA dataset](https://github.com/Yale-LILY/FeTaQA).
        ```
 
 3. **Set up API keys** (optional, for real LLM calls):
