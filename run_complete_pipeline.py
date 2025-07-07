@@ -59,14 +59,14 @@ class FinMORALPipeline:
             if os.path.exists(self.step_outputs['step1']):
                 with open(self.step_outputs['step1'], 'r', encoding='utf-8') as f:
                     lines = f.readlines()
-                print(f"✅ Step 1 completed: {len(lines)} examples processed")
+                print(f" Step 1 completed: {len(lines)} examples processed")
                 return True
             else:
-                print("❌ Step 1 failed: Output file not found")
+                print(" Step 1 failed: Output file not found")
                 return False
                 
         except Exception as e:
-            print(f"❌ Step 1 failed: {e}")
+            print(f" Step 1 failed: {e}")
             return False
     
     def run_step2_candidate_generation(self) -> bool:
@@ -87,14 +87,14 @@ class FinMORALPipeline:
             if os.path.exists(self.step_outputs['step2']):
                 with open(self.step_outputs['step2'], 'r', encoding='utf-8') as f:
                     lines = f.readlines()
-                print(f"✅ Step 2 completed: {len(lines)} candidates generated")
+                print(f" Step 2 completed: {len(lines)} candidates generated")
                 return True
             else:
-                print("❌ Step 2 failed: Output file not found")
+                print(" Step 2 failed: Output file not found")
                 return False
                 
         except Exception as e:
-            print(f"❌ Step 2 failed: {e}")
+            print(f" Step 2 failed: {e}")
             return False
     
     def run_step3_final_selection(self) -> bool:
@@ -115,14 +115,14 @@ class FinMORALPipeline:
             if os.path.exists(self.step_outputs['step3']):
                 with open(self.step_outputs['step3'], 'r', encoding='utf-8') as f:
                     lines = f.readlines()
-                print(f"✅ Step 3 completed: {len(lines)} final answers selected")
+                print(f" Step 3 completed: {len(lines)} final answers selected")
                 return True
             else:
-                print("❌ Step 3 failed: Output file not found")
+                print(" Step 3 failed: Output file not found")
                 return False
                 
         except Exception as e:
-            print(f"❌ Step 3 failed: {e}")
+            print(f" Step 3 failed: {e}")
             return False
     
     def run_step4_evaluation(self) -> bool:
@@ -145,16 +145,16 @@ class FinMORALPipeline:
             if os.path.exists(self.step_outputs['step4']):
                 with open(self.step_outputs['step4'], 'r', encoding='utf-8') as f:
                     report = json.load(f)
-                print(f"✅ Step 4 completed: Evaluation report generated")
+                print(f" Step 4 completed: Evaluation report generated")
                 print(f"   FinMORAL EM: {report.get('summary', {}).get('finmoral_em', 0):.3f}")
                 print(f"   FinMORAL TwAccuracy: {report.get('summary', {}).get('finmoral_twaccuracy', 0):.3f}")
                 return True
             else:
-                print("❌ Step 4 failed: Output file not found")
+                print(" Step 4 failed: Output file not found")
                 return False
                 
         except Exception as e:
-            print(f"❌ Step 4 failed: {e}")
+            print(f" Step 4 failed: {e}")
             return False
     
     def create_final_report(self) -> Dict[str, Any]:
@@ -211,7 +211,7 @@ class FinMORALPipeline:
         with open('finmoral_final_report.json', 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Final report saved: finmoral_final_report.json")
+        print(f" Final report saved: finmoral_final_report.json")
         return report
     
     def print_pipeline_summary(self, report: Dict[str, Any]):
@@ -225,32 +225,32 @@ class FinMORALPipeline:
         print(f"Steps Completed: {len(report['steps_completed'])}/4")
         
         for step in report['steps_completed']:
-            print(f"  ✅ {step}")
+            print(f"   {step}")
         
         if report['summary']:
-            print(f"\n🏆 Key Results:")
+            print(f"\n Key Results:")
             print(f"  FinMORAL EM: {report['summary'].get('finmoral_em', 0):.3f}")
             print(f"  FinMORAL TwAccuracy: {report['summary'].get('finmoral_twaccuracy', 0):.3f}")
             print(f"  Best Baseline: {report['summary'].get('best_baseline', 'N/A')}")
         
-        print(f"\n📊 Datasets Used:")
+        print(f"\n Datasets Used:")
         for dataset, description in report['dataset_info'].items():
             print(f"  {dataset.upper()}: {description}")
         
-        print(f"\n🤖 Models Used:")
+        print(f"\n Models Used:")
         for model, description in report['model_info'].items():
             print(f"  {model}: {description}")
         
-        print(f"\n📁 Output Files:")
+        print(f"\n Output Files:")
         for step, output_file in self.step_outputs.items():
             if step in report['steps_completed']:
                 print(f"  {step}: {output_file}")
         
-        print(f"\n🎉 FinMORAL pipeline execution completed!")
+        print(f"\n FinMORAL pipeline execution completed!")
     
     def run_complete_pipeline(self) -> bool:
         """Run the complete FinMORAL pipeline"""
-        print("🚀 Starting FinMORAL Framework Pipeline")
+        print(" Starting FinMORAL Framework Pipeline")
         print("="*60)
         print("This pipeline implements the FinMORAL framework with:")
         print("• 2 datasets: WTQ + FTQ")
@@ -272,12 +272,12 @@ class FinMORALPipeline:
         completed_steps = []
         
         for step_name, step_function in steps:
-            print(f"\n🔄 Running {step_name}...")
+            print(f"\n Running {step_name}...")
             if step_function():
                 completed_steps.append(step_name)
-                print(f"✅ {step_name} completed successfully")
+                print(f" {step_name} completed successfully")
             else:
-                print(f"❌ {step_name} failed")
+                print(f" {step_name} failed")
                 break
         
         # Create final report
@@ -288,12 +288,12 @@ class FinMORALPipeline:
             end_time = time.time()
             duration = end_time - start_time
             
-            print(f"\n⏱️  Total execution time: {duration:.2f} seconds")
-            print(f"📈 Pipeline success rate: {len(completed_steps)}/4 steps")
+            print(f"\n  Total execution time: {duration:.2f} seconds")
+            print(f" Pipeline success rate: {len(completed_steps)}/4 steps")
             
             return True
         else:
-            print(f"\n❌ Pipeline failed: Only {len(completed_steps)}/4 steps completed")
+            print(f"\n Pipeline failed: Only {len(completed_steps)}/4 steps completed")
             return False
 
 def main():
@@ -308,7 +308,7 @@ def main():
     
     missing_files = [f for f in required_files if not os.path.exists(f)]
     if missing_files:
-        print(f"❌ Missing required files: {missing_files}")
+        print(f" Missing required files: {missing_files}")
         print("Please ensure all step files are present in the current directory.")
         return False
     
@@ -316,7 +316,7 @@ def main():
     dataset_paths = ['WTQdata', 'fetaQAdata']
     missing_datasets = [d for d in dataset_paths if not os.path.exists(d)]
     if missing_datasets:
-        print(f"❌ Missing datasets: {missing_datasets}")
+        print(f" Missing datasets: {missing_datasets}")
         print("Please ensure WTQdata and fetaQAdata directories are present.")
         return False
     
@@ -325,15 +325,15 @@ def main():
     success = pipeline.run_complete_pipeline()
     
     if success:
-        print(f"\n🎊 FinMORAL Framework Pipeline completed successfully!")
-        print(f"📊 Check the generated files for detailed results:")
+        print(f"\n FinMORAL Framework Pipeline completed successfully!")
+        print(f" Check the generated files for detailed results:")
         print(f"   • step1_processed_data.jsonl - Processed datasets")
         print(f"   • step2_candidates.jsonl - Generated candidates")
         print(f"   • step3_final_results.jsonl - Final answers")
         print(f"   • evaluation_report.json - Evaluation results")
         print(f"   • finmoral_final_report.json - Complete summary")
     else:
-        print(f"\n💥 Pipeline execution failed. Check the logs above for details.")
+        print(f"\n Pipeline execution failed. Check the logs above for details.")
     
     return success
 
