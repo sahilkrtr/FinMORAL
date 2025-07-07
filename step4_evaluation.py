@@ -457,38 +457,38 @@ class FinMORALEvaluator:
         print("="*60)
         
         # Baseline comparison
-        print("\n📊 BASELINE COMPARISON:")
+        print("\n BASELINE COMPARISON:")
         print("-" * 30)
         for baseline, metrics in report['baseline_comparison'].items():
             print(f"{baseline:12} | EM: {metrics['EM']:.3f} | TwAccuracy: {metrics['TwAccuracy']:.3f}")
         
         # Ablation study
-        print("\n🔬 ABLATION STUDY:")
+        print("\n ABLATION STUDY:")
         print("-" * 30)
         for ablation, metrics in report['ablation_study'].items():
             print(f"{ablation:15} | EM: {metrics['EM']:.3f} | TwAccuracy: {metrics['TwAccuracy']:.3f}")
         
         # Cross-domain generalization
-        print("\n🌐 CROSS-DOMAIN GENERALIZATION:")
+        print("\n CROSS-DOMAIN GENERALIZATION:")
         print("-" * 30)
         for domain_pair, metrics in report['cross_domain_generalization'].items():
             print(f"{domain_pair:12} | EM: {metrics['EM']:.3f} | TwAccuracy: {metrics['TwAccuracy']:.3f}")
         
         # Modality drop
-        print("\n📉 MODALITY DROP:")
+        print("\n MODALITY DROP:")
         print("-" * 30)
         for modality, metrics in report['modality_drop'].items():
             print(f"{modality:15} | EM: {metrics['EM']:.3f} | TwAccuracy: {metrics['TwAccuracy']:.3f}")
         
         # Summary
         summary = report['summary']
-        print(f"\n🏆 SUMMARY:")
+        print(f"\n SUMMARY:")
         print("-" * 30)
         print(f"FinMORAL EM: {summary['finmoral_em']:.3f}")
         print(f"FinMORAL TwAccuracy: {summary['finmoral_twaccuracy']:.3f}")
         print(f"Best Baseline: {summary['best_baseline']}")
         
-        print(f"\n✅ Evaluation completed! Report saved to: evaluation_report.json")
+        print(f"\n Evaluation completed! Report saved to: evaluation_report.json")
 
 def main():
     """Main function for Step 4: Evaluation following FinMORAL framework"""
@@ -505,9 +505,9 @@ def main():
         # Create comprehensive evaluation report
         report = evaluator.create_evaluation_report(results_file)
         
-        print(f"\n🎉 Step 4 completed successfully!")
-        print(f"📊 Evaluation report generated")
-        print(f"📈 FinMORAL framework evaluation complete")
+        print(f"\n Step 4 completed successfully!")
+        print(f" Evaluation report generated")
+        print(f" FinMORAL framework evaluation complete")
         
     except FileNotFoundError:
         print(f"Results file {results_file} not found. Please run Step 3 first.")
