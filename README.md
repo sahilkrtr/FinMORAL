@@ -52,18 +52,6 @@ pip install -r requirements.txt
    - **WTQ (WikiTableQuestions):** [Download here](https://github.com/ppasupat/WikiTableQuestions)
    - **FTQ (Filtered FeTaQA):**
      - FTQ is a filtered version of the [FeTaQA dataset](https://github.com/Yale-LILY/FeTaQA).
-     - **FeTaQA** is a large-scale Free-form Table Question Answering dataset with 10K Wikipedia-based table, question, and free-form answer pairs. See the official repo: [https://github.com/Yale-LILY/FeTaQA](https://github.com/Yale-LILY/FeTaQA)
-     - **License:** CC-BY-SA-4.0 ([details](https://github.com/Yale-LILY/FeTaQA/blob/main/LICENSE))
-     - **Citation:**
-       ```
-       @article{Nan2021FeTaQAFT,
-         title={FeTaQA: Free-form Table Question Answering},
-         author={Nan, Linyong and Hsieh, Chiachun and Mao, Ziming and Lin, Xi Victoria and Verma, Neha and Zhang, Rui and Kryściński, Wojciech and Schoelkopf, Hailey and Kong, Riley and Tang, Xiangru and Mutuma, Mutethia and Rosand, Ben and Trindade, Isabel and Bandaru, Renusree and Cunningham, Jacob and Xiong, Caiming and Radev, Dragomir},
-         journal={Transactions of the Association for Computational Linguistics},
-         year={2022},
-         volume={10},
-         pages={35-49}
-       }
        ```
 
 3. **Set up API keys** (optional, for real LLM calls):
